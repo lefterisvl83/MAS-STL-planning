@@ -1,8 +1,9 @@
 # Multi-agent STL planning with block-coordinate optimization & penalty methods
+Imagine a multi-robot system assigned a 
 Using penalty methods with block coordinate gradient descent to solve multi-agent signal temporal logic (STL) planning problems
 
 <p align="center">
-  <img src="assets/trajectories.gif" width="600" title="STL Planning Animation">
+  <img src="assets/Github_gif_intro.gif" width="600" title="STL Planning Animation">
   <br>
   <img src="https://img.shields.io/badge/Python-3.9+-blue.svg">
   <img src="https://img.shields.io/badge/JAX-Accelerated-orange.svg">
