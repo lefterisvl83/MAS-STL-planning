@@ -1,4 +1,4 @@
-# Efficient Multi-Agent Signal Temporal Logic (STL) Planning
+# Multi-Agent Signal Temporal Logic (STL) Planning
 <p align="center">
   <img src="assets/Github_gif_intro.gif" width="800" title="STL Planning Animation">
   <br>
