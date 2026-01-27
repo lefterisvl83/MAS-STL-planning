@@ -79,6 +79,10 @@ with a penalty parameter $\lambda>0$ and a quadratic penalty function
 
 $$ R(**u**) = \max(0,-\varrho^\phi_\Gamma(**u**))^2$$
 
+This is a smooth penalty function with gradient
+
+$$\nabla R(**u**) = -2\max(0,-\varrho^\phi_\Gamma(**u**))\nabla\varrho_\Gamma^\phi(**u**)$$
+
 where $\varrho^\phi_\Gamma(u)$ represents the **smooth STL semantics** underapproximating $\min\rho^{\phi_\nu}(\mathbf{u}_\nu)$ using log-sum-exp underapproximations: 
 
 $$\min \left(\mu_1,\ldots,\mu_q\right) 
