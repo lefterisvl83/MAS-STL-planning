@@ -84,39 +84,38 @@ which is a conjunctive STL formula, where each conjunct $\phi_\nu$ is defined ov
 
 The set $\mathcal{K}_\phi$ collects all these cliques induced by $\phi$, and may include individual agents $(|\nu|=1)$ or group of agents $(1<|\nu|\leq |\mathcal{V}|)$. Note that different cliques may overlap in their agent sets, indicating that some agents participate in multiple collaborative tasks. 
 
-> 🐍 Python Implementation: Clique-based Robustness
+> 🐍 Python Implementation: Clique collection example
 >
 ```python
 import jax.numpy as jnp
 
-def get_clique_trajectory(all_trajectories, clique_indices):
+def get_clique_trajectories(X_all, K_phi):
     """
-    Collects individual trajectories into the aggregate clique trajectory x_nu(t).
-    all_trajectories: (M, N, dim) -> x_nu: (len(clique), N, dim)
+    Extracts aggregate trajectories x_nu for each clique nu in K_phi.
+    X_all: (M, N+1, 3) array of all agent trajectories.
+    K_phi: List of agent indices for each clique.
     """
-    return all_trajectories[jnp.array(clique_indices)]
+    return [X_all[jnp.array(nu)] for nu in K_phi]
 
-def global_specification(all_trajectories, K_phi, robustness_func):
-    """
-    Implements the conjunctive specification: phi = wedge phi_nu
-    """
-    rho_values = []
-    
-    # Iterate through each clique nu in the set of all cliques K_phi
-    for nu in K_phi:
-        # 1. Aggregate trajectories for agents in this specific clique
-        x_nu = get_clique_trajectory(all_trajectories, nu)
-        
-        # 2. Evaluate the specific conjunct phi_nu for this clique
-        rho_nu = robustness_func(x_nu, nu)
-        rho_values.append(rho_nu)
-    
-    # 3. The result is a vector of robustness values to be aggregated 
-    # using smooth semantics in the next section.
-    return jnp.array(rho_values)
+# --- Example: Specification with overlapping cliques ---
+# phi = phi_0 ^ phi_1 ^ phi_{0,1}
+K_phi = [
+    [0],    # Clique nu_0: Agent 0 (e.g., Reach Goal A)
+    [1],    # Clique nu_1: Agent 1 (e.g., Reach Goal B)
+    [0, 1]  # Clique nu_2: Agents 0 & 1 (e.g., Collision Avoidance)
+]
 
-# Example: Agents 0 and 1 have individual tasks AND a shared task.
-# K_phi = [[0], [1], [0, 1]]
+# 1. Compute global trajectories for the whole MAS
+X_all = compute_MAS_trajectories(U, X0, dt)
+
+# 2. Collect into aggregate trajectories x_nu
+x_cliques = get_clique_trajectories(X_all, K_phi)
+
+# 3. Access a single aggregate trajectory x_nu
+# For the collaborative task (nu_2), x_collaboration contains paths for agents 0 and 1
+x_collaboration = x_cliques[2]
+ 
+# Output: (2, N+1, 3) -> (|nu|, steps, state_dim)
 ```
 
 ---
