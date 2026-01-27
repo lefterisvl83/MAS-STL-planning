@@ -167,23 +167,7 @@ def agent_total_cost(u_i, x0_i):
     return total_run
 ```
 
----
-
-## 💡 Solution Approach
-
-We relax the constrained problem into an unconstrained penalty-based program (UPP):
-
-$$\min_{\mathbf{u}} \mathcal{F}_\lambda(\mathbf{u}) = \mathcal{L}(\mathbf{u}) + \lambda R(**u**) \qquad \text{(UPP)}$$
-
-with a penalty parameter $\lambda>0$ and a quadratic penalty function
-
-$$ R(**u**) = \max(0,-\varrho^\phi_\Gamma(**u**))^2$$
-
-This is a smooth penalty function with gradient
-
-$$\nabla R(**u**) = -2\max(0,-\varrho^\phi_\Gamma(**u**))\nabla\varrho_\Gamma^\phi(**u**)$$
-
-where $\varrho^\phi_\Gamma(u)$ represents the **smooth STL semantics** underapproximating $\min\rho^{\phi_\nu}(\mathbf{u}_\nu)$. We use **softmin/softmax** to underapproximate min/max operators in $\min\rho^{\phi_\nu}(\mathbf{u}_\nu)$: 
+We use **softmin/softmax** to underapproximate min/max operators in $\min\rho^{\phi_\nu}(\mathbf{u}_\nu)$: 
 
 $$\min \left(\mu_1,\ldots,\mu_q\right) 
 \overset{^{\geq}}{\approx} 
@@ -194,6 +178,7 @@ $$\max \left(\mu_1,\ldots,\mu_q\right)
 \frac{\sum_{j=1}^q \mu_j \exp(\Gamma \mu_j)}{\sum_{j=1}^q \exp(\Gamma \mu_j)}$$
 
 where $\Gamma>0$ is the smoothing parameter.
+
 > 🐍 Python implementation of softmin/softmax:
 > 
 ```python
@@ -217,6 +202,49 @@ def smooth_max(vec, G):
     # The sum(mu * exp(G*mu)) / sum(exp(G*mu))
     return jnp.sum(vec * exp_weights) / (sum_weights)
 ```
+---
+
+## 💡 Solution Approach
+
+We relax the constrained problem into an unconstrained penalty-based program (UPP):
+
+$$\min_{\mathbf{u}} \mathcal{F}_\lambda(\mathbf{u}) = \mathcal{L}(\mathbf{u}) + \lambda R(**u**) \qquad \text{(UPP)}$$
+
+with a penalty parameter $\lambda>0$ and a quadratic penalty function
+
+$$ R(**u**) = \max(0,-\varrho^\phi_\Gamma(**u**))^2$$
+
+This is a smooth penalty function with gradient
+
+$$\nabla R(**u**) = -2\max(0,-\varrho^\phi_\Gamma(**u**))\nabla\varrho_\Gamma^\phi(**u**)$$
+
+where $\varrho^\phi_\Gamma(u)$ represents the **smooth STL semantics** underapproximating $\min\rho^{\phi_\nu}(\mathbf{u}_\nu)$. 
+
+> Python Implementation: Penalty Function & Smooth Robustness
+>
+```python
+@jax.jit
+def compute_penalty_R(u, X0, K_phi, G):
+    """
+    Computes the quadratic penalty R(u) = max(0, -rho_smooth)^2.
+    """
+    # 1. Integrate all agent trajectories
+    X_all = compute_MAS_trajectories(u, X0)
+    
+    # 2. Extract aggregate trajectories for each clique
+    x_cliques = get_clique_trajectories(X_all, K_phi)
+    
+    # 3. Evaluate smooth robustness for each clique phi_nu
+    # Note: evaluate_phi_nu is a placeholder for your specific STL logic
+    rho_cliques = jnp.array([evaluate_phi_nu(x_nu) for x_nu in x_cliques])
+    
+    # 4. Global smooth robustness (under-approximation of the min)
+    rho_smooth = smooth_min(rho_cliques, G)
+    
+    # 5. Quadratic penalty on violation
+    return jnp.maximum(0, -rho_smooth)**2
+```
+
 
 ### Inner Loop (BCGD)
 For a fixed penalty $\lambda$, we use **Block-Coordinate Gradient Descent (BCGD)**:
