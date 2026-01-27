@@ -53,7 +53,7 @@ In this formulation:
 * $\mathbf{u}_i = (u_i(0), \dots, u_i(N-1))$ denotes the $i^{th}$ agent's inputs.
 * $\ell_i$ is the **running cost**, penalizing state energy, control effort, or deviations from reference points.
 * $V_{f,i}$ is the **terminal cost**, penalizing deviations from a desired terminal condition.
-* $\rho^\phi(\mathbf{u})$ represents the **STL robustness**.
+* $\rho^\phi(\mathbf{u})$ represents the **STL robustness function**.
 
 The multi-agent STL planning problem is defined as:
 
