@@ -121,10 +121,52 @@ $$
 | **Output:** | $\boldsymbol{u}^{\star,k}$ |
 
 
+```python
+import jax
+import jax.numpy as jnp
+
+@jax.jit
+def bcgd_epoch(u_k, lam, gamma_smooth, key):
+    """
+    Performs one full BCGD epoch. 
+    Each agent is updated sequentially in a random order.
+    """
+    num_agents = u_k.shape[0]
+    
+    # 1. Randomly shuffle agent indices for this epoch
+    shuffled_indices = jax.random.permutation(key, jnp.arange(num_agents))
+    
+    def agent_update_body(i, current_u):
+        idx = shuffled_indices[i]
+        
+        # 2. Compute gradient of R for the current global trajectory
+        # Note: grad_R is re-evaluated to account for previous agent updates
+        grad_R = jax.grad(compute_penalty_R)(current_u, gamma_smooth)
+        
+        # 3. Compute Block Update Direction (BUD) for agent 'idx'
+        # Local subproblem: min over d_i only
+        d_i = solve_local_subproblem(current_u[idx], grad_R[idx], lam)
+        
+        # 4. Armijo Line Search for this specific block
+        # Validates sufficient decrease for F_lambda along d_i
+        alpha_i = find_block_step_size(current_u, d_i, idx, lam)
+        
+        # 5. In-place update (via JAX's .at[].set() syntax)
+        next_u = current_u.at[idx].set(current_u[idx] + alpha_i * d_i)
+        return next_u
+
+    # Run sequential updates for all agents in the shuffled list
+    u_next = jax.lax.fori_loop(0, num_agents, agent_update_body, u_k)
+    
+    return u_next
+```
+
+
 ### Outer Loop (Penalty Method)
 1. **Initialize** penalty parameter $\lambda_0$ and control sequence $\mathbf{u}_0$.
 2. **Solve** the inner loop (Algorithm 1) to find a stationary point.
 3. **Increase** $\lambda$ (e.g., $\lambda \leftarrow \beta \mu$) and repeat until $\rho^\phi(\mathbf{u}) > 0$.
+
 
 **Algorithm 2: Penalty Method (PM)**
 
@@ -139,7 +181,33 @@ $$
 | 6 | **end for** |
 | **Output:** | $\bar{\boldsymbol{u}}^{\star,k}$ |
 
-
+```python
+def penalty_method_outer_loop(u_init, config):
+    u_curr = u_init
+    lam = config['lambda_0']
+    key = jax.random.PRNGKey(0)
+    
+    for k in range(config['K_PM']):
+        # Check STL robustness satisfaction (Early exit)
+        rho_val = compute_real_stl_robustness(u_curr)
+        if rho_val > 0:
+            break
+            
+        # Inner loop: Run BCGD epochs until convergence for current lambda
+        for inner_k in range(config['max_inner_iter']):
+            key, subkey = jax.random.split(key)
+            u_prev = u_curr
+            u_curr = bcgd_epoch(u_curr, lam, config['gamma'], subkey)
+            
+            # Check for inner-loop stationarity
+            if jnp.linalg.norm(u_curr - u_prev) < config['eps_inner']:
+                break
+        
+        # Update Penalty Schedule
+        lam *= config['eta_lam']  # Increase penalty weight
+        
+    return u_curr
+```
 
 ---
 
