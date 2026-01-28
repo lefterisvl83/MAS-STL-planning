@@ -1,21 +1,25 @@
 # Numerical Validation: Ten-Robot Motion Planning
 
-This section evaluates the **BCGD-PM** (Block Coordinate Gradient Descent - Penalty Method) framework using a complex multi-agent motion planning scenario. We compare its performance against traditional Mixed-Integer Programming (MIP) approaches across various dynamical models and task specifications.
+We evaluate the **BCGD-PM** (Block Coordinate Gradient Descent - Penalty Method) framework using a complex multi-agent motion planning scenario. We compare its performance against traditional Mixed-Integer Programming (MIP) approaches across various task specifications as well as linear and unicycle dynamical models.
 
 ---
 
 ## 1. Problem Setup
-The evaluation uses a ten-robot workspace containing three obstacles, ten collection regions ($C_i$), and ten delivery regions ($D_i$). 
+The evaluation uses a ten-robot workspace containing three obstacles ($O_1$, $O_2$, $O_3$), ten collection regions ($C_i$), and ten delivery regions ($D_i$). Robot $i$ is required to visit its respective collection and delivery regions ($C_i, D_i$) within specified time intervals, while simultaneously meeting peers belonging to the same cliques within a 100-step time horizon. 
 
 ### Robot Dynamics
-We consider discrete-time **unicycle dynamics** for each robot $i$:
+We test performance under discrete-time **linear dynamics** as well as **unicycle dynamics** for each robot $i$ with discretization interval $dt=1$ time unit:
 
-* **State:** $(z_i(t), y_i(t)) \in \mathbb{R}^2$ (Cartesian position) and $\theta_i(t) \in \mathbb{R}$ (heading).
+**Linear case:**
+
+**Unicycle case:**
+
+* **State:** $x_i(t)=(z_i(t), y_i(t)) \in \mathbb{R}^2$ (Cartesian position) and $\theta_i(t) \in \mathbb{R}$ (heading).
 * **Controls:** $v_i(t)$ (linear velocity) and $\omega_i(t)$ (angular velocity).
 * **Equations:**
-  $$z_i(t+1)=z_i(t)+v_i(t)\cos\theta_i(t)$$
-  $$y_i(t+1)=y_i(t)+v_i(t)\sin\theta_i(t)$$
-  $$\theta_i(t+1)=\theta_i(t)+\omega_i(t)$$
+  $$z_i(t+1)=z_i(t)+dtv_i(t)\cos\theta_i(t)$$
+  $$y_i(t+1)=y_i(t)+dtv_i(t)\sin\theta_i(t)$$
+  $$\theta_i(t+1)=\theta_i(t)+dt\omega_i(t)$$
 
 ### Collaborative Task Topology & Cliques $\nu \in \mathcal{K}_\phi$
 The figure below illustrates the collaborative formulas $\phi_\nu$ defined for cliques of agents. Each node represents a robot, and colored edges represent specific joint STL tasks.
