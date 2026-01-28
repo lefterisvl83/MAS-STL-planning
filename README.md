@@ -28,8 +28,7 @@ $$x_i(t+1) = f_i(x_i(t), u_i(t))$$
 
 where $x_i(t) \in \mathbb{R}^{n_i}$ and $u_i(t) \in \mathbb{R}^{m_i}$ are the state and input vectors. 
 
-> 🐍 Python Implementation: Unicycle Dynamics:
-> We model each agent $i$ as a unicycle with states $x_i = [p_x, p_y, \theta]^\top$ and inputs $u_i = [v, \omega]^\top$ (linear velocity and angular velocity).
+> 🐍 **Python Implementation: We model each agent $i$ using discrete-time unicycle dynamics** with states $x_i = [p_x, p_y, \theta]^\top$ (Cartesian position and heading) and inputs $u_i = [v, \omega]^\top$ (linear velocity and angular velocity):
 >
 ```python
 import jax
@@ -84,7 +83,7 @@ which is a conjunctive STL formula, where each conjunct $\phi_\nu$ is defined ov
 
 The set $\mathcal{K}_\phi$ collects all these cliques induced by $\phi$, and may include individual agents $(|\nu|=1)$ or group of agents $(1<|\nu|\leq |\mathcal{V}|)$. Note that different cliques may overlap in their agent sets, indicating that some agents participate in multiple collaborative tasks. 
 
-> 🐍 Python Implementation: Clique collection example
+> 🐍 **Python Implementation: Clique collection example:**
 >
 ```python
 import jax.numpy as jnp
@@ -145,7 +144,7 @@ $$
 
 The goal is to minimize a separable cost function $\mathcal{L}(u)$ while satisfying a multi-agent STL specification $\phi$.
 
-> 🐍 Python implementation: Running control cost $\mathcal{L}(u_i)$ for unicycle dynamics
+> 🐍 **Python implementation: Running control cost $\mathcal{L}(u_i)$ for unicycle dynamics:**
 >
 ```python
 import jax
@@ -179,7 +178,7 @@ $$\max \left(\mu_1,\ldots,\mu_q\right)
 
 where $\Gamma>0$ is the smoothing parameter.
 
-> 🐍 Python implementation of softmin/softmax:
+> 🐍 **Python implementation of softmin/softmax:**
 > 
 ```python
 import jax
@@ -220,7 +219,7 @@ $$\nabla R(**u**) = -2\max(0,-\varrho^\phi_\Gamma(**u**))\nabla\varrho_\Gamma^\p
 
 where $\varrho^\phi_\Gamma(u)$ represents the **smooth STL semantics** underapproximating $\min\rho^{\phi_\nu}(\mathbf{u}_\nu)$. 
 
-> Python Implementation: Penalty Function & Smooth Robustness
+> 🐍 **Python Implementation: Penalty Function & Smooth Robustness**
 >
 ```python
 @jax.jit
