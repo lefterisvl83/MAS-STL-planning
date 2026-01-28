@@ -121,18 +121,18 @@ The algorithm is implemented in **Python**, leveraging **JAX** for hardware-acce
 
 The following animations demonstrate the swarm behavior across the three primary mission specifications for both linear and non-linear dynamics.
 
-### 🔹 Linear Dynamics (Double Integrator)
+### 🔹 Linear Dynamics (Single Integrator)
 
 #### R2AM - Linear
-![R2AM Linear](assets/R2AM_lin.gif)
+![R2AM Linear](assets/Github_gif_intro.gif)
 *Baseline Reach-Avoid multi-agent mission.*
 
 #### R2AMCA - Linear
-![R2AMCA Linear](assets/R2AMCA_lin.gif)
+![R2AMCA Linear](assets/Github_gif_intro.gif)
 *Reach-Avoid mission with Inter-Agent Collision Avoidance.*
 
 #### RURAMCA - Linear
-![RURAMCA Linear](assets/RURAMCA_lin.gif)
+![RURAMCA Linear](assets/Github_gif_intro.gif)
 *Complex Reach-Until-Reach mission with Collision Avoidance and Collaborative Meeting.*
 
 ---
@@ -140,19 +140,15 @@ The following animations demonstrate the swarm behavior across the three primary
 ### 🔸 Unicycle Dynamics (Non-linear)
 
 #### R2AM - Unicycle
-![R2AM Unicycle](assets/R2AM_unic.gif)
+![R2AM Unicycle](assets/Github_gif_intro.gif)
 *Baseline Reach-Avoid mission under non-linear unicycle constraints.*
 
 #### R2AMCA - Unicycle
-![R2AMCA Unicycle](assets/R2AMCA_unic.gif)
+![R2AMCA Unicycle](assets/Github_gif_intro.gif)
 *Unicycle dynamics with reactive Inter-Agent Collision Avoidance.*
 
 #### RURAMCA - Unicycle
-![RURAMCA Unicycle](assets/RURAMCA_unic.gif)
+![RURAMCA Unicycle](assets/Github_gif_intro.gif)
 *Full RURAMCA mission satisfaction under non-linear unicycle dynamics.*
 
 ---
-
-### 📍 Final Trajectory Snapshot (RURAMCA)
-![Ten-Robot Trajectories](figures/RURAMCA_unic_fig_final.png)
-*Figure 1: Final planning results for the RURAMCA scenario with ten robots (Unicycle).*
