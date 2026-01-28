@@ -4,22 +4,32 @@ We evaluate the **BCGD-PM** (Block Coordinate Gradient Descent - Penalty Method)
 
 ---
 
-## 1. Problem Setup
-The evaluation uses a ten-robot workspace containing three obstacles ($O_1$, $O_2$, $O_3$), ten collection regions ($C_i$), and ten delivery regions ($D_i$). Robot $i$ is required to visit its respective collection and delivery regions ($C_i, D_i$) within specified time intervals, while simultaneously meeting peers belonging to the same cliques within a 100-step time horizon. 
+## Problem Description
+The evaluation considers a ten-robot workspace containing three obstacles ($\mathcal{O}_1, \mathcal{O}_2, \mathcal{O}_3$), ten collection regions ($C_i$), and ten delivery regions ($D_i$). 
+
+In the most challenging case, robot $i$ must satisfy a complex Signal Temporal Logic (STL) task:
+* **Reachability:** Visit collection region $C_i$ and delivery region $D_i$ within specific time intervals.
+* **Safety:** Avoid all obstacles $\mathcal{O}_l$ and maintain inter-agent collision avoidance.
+* **Collaboration:** Meet peers belonging to the same cliques within the 100-step time horizon. 
 
 ### Robot Dynamics
-We test performance under discrete-time **linear dynamics** as well as **unicycle dynamics** for each robot $i$ with discretization interval $dt=1$ time unit:
+We test performance under discrete-time **linear dynamics** as well as **unicycle dynamics** for each robot $i$ with discretization interval $\delta t=1$ time unit:
 
-**Linear case:**
+**Linear Case (Single Integrator):**
+In this simplified setup, the control inputs directly dictate the change in position.
+* **State:** $x_i(t) = (z_i(t), y_i(t)) \in \mathbb{R}^2$ (Cartesian position).
+* **Controls:** $u_i(t) = (u_{i,1}(t), u_{i,2}(t)) \in \mathbb{R}^2$ (velocity inputs).
+* **Equations:** $x_i(t+1) = x_i(t) + \delta t u_i(t)$
 
 **Unicycle case:**
-
+In this model, the robot's movement is restricted by its heading.
 * **State:** $x_i(t)=(z_i(t), y_i(t)) \in \mathbb{R}^2$ (Cartesian position) and $\theta_i(t) \in \mathbb{R}$ (heading).
 * **Controls:** $v_i(t)$ (linear velocity) and $\omega_i(t)$ (angular velocity).
 * **Equations:**
-  $$z_i(t+1)=z_i(t)+dtv_i(t)\cos\theta_i(t)$$
-  $$y_i(t+1)=y_i(t)+dtv_i(t)\sin\theta_i(t)$$
-  $$\theta_i(t+1)=\theta_i(t)+dt\omega_i(t)$$
+$z_i(t+1)=z_i(t)+\delta t v_i(t)\cos\theta_i(t)$, $y_i(t+1)=y_i(t)+\delta t v_i(t)\sin\theta_i(t)$, $\theta_i(t+1)=\theta_i(t)+\delta t\omega_i(t)$
+
+### Cost Function: $\mathcal{L}(u)=\sum_i \mathcal{L}_i(u_i)$:
+To retain convexity of $\mathcal{L}_i$ we 
 
 ### Collaborative Task Topology & Cliques $\nu \in \mathcal{K}_\phi$
 The figure below illustrates the collaborative formulas $\phi_\nu$ defined for cliques of agents. Each node represents a robot, and colored edges represent specific joint STL tasks.
