@@ -372,6 +372,22 @@ def penalty_method_outer_loop(u_init, config):
 * **Scalability**: Handles large robot fleets by directional updates at the agent-block level.
 * **Convergence**: Provable convergence to stationary points of the penalized problem (UPP).
 ---
+
+## 🛠 Requirements & Installation
+
+This project is implemented in **Python 3.9+** using [JAX](https://github.com/google/jax) for hardware-accelerated automatic differentiation. 
+
+### Core Dependencies
+* **JAX / jaxlib**: For high-performance optimization and vectorized dynamics.
+* **Matplotlib**: For generating trajectories and workspace visualizations.
+* **NumPy**: For data handling and matrix operations.
+
+### Installation
+Install all dependencies via pip:
+```bash
+pip install --upgrade "jax[cpu]" matplotlib numpy
+```
+---
 ## 📚 References
 Details of the smooth under approximations of the STL robustness function can be found in:
 * **Y. Gilpin, V. Kurtz, and H. Lin**, “A smooth robustness measure of signal temporal logic for symbolic control,” IEEE Control Systems Letters, vol. 5, no. 1, pp. 241–246, 2020
