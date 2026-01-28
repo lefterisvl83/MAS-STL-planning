@@ -7,6 +7,12 @@ We evaluate the **BCGD-PM** (Block Coordinate Gradient Descent - Penalty Method)
 ## Problem Description
 The evaluation considers a ten-robot workspace containing three obstacles ($\mathcal{O}_1, \mathcal{O}_2, \mathcal{O}_3$), ten collection regions ($C_i$), and ten delivery regions ($D_i$). 
 
+<p align="center">
+  <img src="assets/clique_set_github.PNG" width="650">
+  <br>
+  <em>Figure 2: Collaborative-task graph for the ten-robot system.</em>
+</p>
+
 In the most challenging case, robot $i$ must satisfy a complex Signal Temporal Logic (STL) task:
 * **Reachability:** Visit collection region $C_i$ and delivery region $D_i$ within specific time intervals.
 * **Safety:** Avoid all obstacles $\mathcal{O}_l$ and maintain inter-agent collision avoidance.
@@ -35,7 +41,7 @@ To retain convexity of $\mathcal{L}_i$ we
 The figure below illustrates the collaborative formulas $\phi_\nu$ defined for cliques of agents. Each node represents a robot, and colored edges represent specific joint STL tasks.
 
 <p align="center">
-  <img src="assets/clique_set_github.PNG" width="650">
+  <img src="assets/clique_set_github.PNG" width="550">
   <br>
   <em>Figure 2: Collaborative-task graph for the ten-robot system.</em>
 </p>
