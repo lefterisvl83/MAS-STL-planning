@@ -118,7 +118,41 @@ The algorithm is implemented in **Python**, leveraging **JAX** for hardware-acce
 ---
 
 ## 5. Visual Results
-The results for the **RURAMCA** scenario under unicycle dynamics are illustrated below. The robots successfully fulfill temporal promises (visiting collection regions until transitioning to delivery) while ensuring collision-free motion and meeting collaborative tasks.
 
+The following animations demonstrate the swarm behavior across the three primary mission specifications for both linear and non-linear dynamics.
+
+### 🔹 Linear Dynamics (Double Integrator)
+
+#### R2AM - Linear
+![R2AM Linear](assets/R2AM_lin.gif)
+*Baseline Reach-Avoid multi-agent mission.*
+
+#### R2AMCA - Linear
+![R2AMCA Linear](assets/R2AMCA_lin.gif)
+*Reach-Avoid mission with Inter-Agent Collision Avoidance.*
+
+#### RURAMCA - Linear
+![RURAMCA Linear](assets/RURAMCA_lin.gif)
+*Complex Reach-Until-Reach mission with Collision Avoidance and Collaborative Meeting.*
+
+---
+
+### 🔸 Unicycle Dynamics (Non-linear)
+
+#### R2AM - Unicycle
+![R2AM Unicycle](assets/R2AM_unic.gif)
+*Baseline Reach-Avoid mission under non-linear unicycle constraints.*
+
+#### R2AMCA - Unicycle
+![R2AMCA Unicycle](assets/R2AMCA_unic.gif)
+*Unicycle dynamics with reactive Inter-Agent Collision Avoidance.*
+
+#### RURAMCA - Unicycle
+![RURAMCA Unicycle](assets/RURAMCA_unic.gif)
+*Full RURAMCA mission satisfaction under non-linear unicycle dynamics.*
+
+---
+
+### 📍 Final Trajectory Snapshot (RURAMCA)
 ![Ten-Robot Trajectories](figures/RURAMCA_unic_fig_final.png)
-*Figure 1: RURAMCA motion planning for ten robots with discrete-time unicycle dynamics.*
+*Figure 1: Final planning results for the RURAMCA scenario with ten robots (Unicycle).*
