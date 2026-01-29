@@ -4,7 +4,7 @@ We evaluate the **BCGD-PM** (Block Coordinate Gradient Descent - Penalty Method)
 
 ---
 
-## Problem Description
+## 1. Problem Description
 The evaluation considers a ten-robot workspace containing three obstacles ($\mathcal{O}_1, \mathcal{O}_2, \mathcal{O}_3$), ten collection regions ($C_i$), and ten delivery regions ($D_i$). 
 
 <p align="center">
@@ -54,7 +54,7 @@ The figure below illustrates the collaborative formulas $\phi_\nu$ defined for c
 
 ---
 
-## Multi-Agent STL scenarios
+## 2. Multi-Agent STL Planning Scenarios
 ### Baseline specification **R2AM** (Reach-twice-Avoid-Meet):
 1.  **Avoid Obstacles:** $\square_{\mathcal{I}}\neg \mathcal{O}_l$ for all time.
 2.  **Collect:** Visit region $C_i$ within $t \in [10, 50]$.
@@ -86,23 +86,7 @@ This scenario introduces more complex temporal dependencies by replacing simple 
 
 ---
 
-## 3. Performance Comparison
-The following table compares the computational runtime (in seconds) between our proposed **BCGD-PM** method and the **MIP** baseline. All benchmarks were performed on a laptop equipped with a 13th Gen Intel(R) Core(TM) i7-1365U (1.80 GHz) processor and 16.0 GB RAM, running a 64-bit operating system.
-
----
-
-| Scenario | Dynamics | BCGD-PM (Ours) | MIP [1, 2] |
-| :--- | :--- | :--- | :--- |
-| **R2AM** | Linear | **345s** | 425s |
-| **R2AMCA** | Linear | **1291s** | > 2000s |
-| **RURAMCA** | Linear | **1740s** | > 10000s |
-| **R2AM** | Unicycle | **820s** | N/A |
-| **R2AMCA** | Unicycle | **1852s** | N/A |
-| **RURAMCA** | Unicycle | **2326s** | N/A |
-
----
-
-## 4. Parameter Selection & Implementation Details
+## 3. Parameter Selection & Implementation Details
 The algorithm is implemented in **Python**, leveraging **JAX** for hardware-accelerated automatic differentiation.
 
 * **Smoothing Parameter ($\Gamma$):** Note that as $\Gamma \to \infty$, the smooth robustness $\varrho_\Gamma^\phi(u)$ converges to the non-smooth robustness $\rho^\phi(u)$, reducing the approximation gap. For the evaluated scenarios, we set $\Gamma=3$. 
@@ -117,31 +101,61 @@ The algorithm is implemented in **Python**, leveraging **JAX** for hardware-acce
 
 ---
 
-## 5. Visual Results
 
-The following comparisons demonstrate the swarm behavior across the three primary mission specifications. Each row compares **Linear Dynamics** (left) with **Unicycle Dynamics** (right).
+## 4. Visual Results
 
-### 📍 R2AM: Baseline Reach-Avoid
+The following comparisons demonstrate the MAS trajectories across the three multi-agent STL specifications. Each row compares **Linear Dynamics** (left) with **Unicycle Dynamics** (right).
+
+### 📍 R2AM: Baseline Reach-twice-Avoid-Meet
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
-| ![R2AM Linear](assets/Github_gif_intr.gif) | ![R2AM Unicycle](assets/Github_gif_intr.gif) |
-| *Baseline mission using double integrator dynamics.* | *Baseline mission under non-linear unicycle constraints.* |
+| ![R2AM Linear](assets/Github_gif_intro.gif) | ![R2AM Unicycle](assets/Github_gif_intro.gif) |
+| *Baseline mission using single integrator dynamics.* | *Baseline mission under non-linear unicycle constraints.* |
+
 
 ---
 
-### 📍 R2AMCA: Collision Avoidance
+### 📍 R2AMCA: R2AM + Collision Avoidance
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
-| ![R2AMCA Linear](assets/Github_gif_intr.gif) | ![R2AMCA Unicycle](assets/Github_gif_intr.gif) |
-| *Reach-Avoid mission with Inter-Agent Collision Avoidance.* | *Unicycle dynamics with reactive collision avoidance.* |
+| ![R2AMCA Linear](assets/Github_gif_intro.gif) | ![R2AMCA Unicycle](assets/Github_gif_intro.gif) |
+| *R2AM mission under linear dynamics & Inter-Agent Collision Avoidance.* | *R2AM mission under unicycle dynamics & Inter-Agent Collision Avoidance.* |
 
 ---
 
-### 📍 RURAMCA: Reach-Until-Reach
+### 📍 RURAMCA: Reach-Until-Reach + Obstacle Avoidance + Collaborative Meeting + Inter-Agent Collision Avoidance
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
-| ![RURAMCA Linear](assets/Github_gif_intr.gif) | ![RURAMCA Unicycle](assets/Github_gif_intr.gif) |
-| *Complex mission with until-logic and collaborative meeting.* | *Full RURAMCA mission satisfaction under non-linear dynamics.* |
+| ![RURAMCA Linear](assets/Github_gif_intro.gif) | ![RURAMCA Unicycle](assets/Github_gif_intro.gif) |
+| *Full RURAMCA mission under linear dynamics.* | *Full RURAMCA mission under unicycle dynamics.* |
 
 ---
+## 5. Performance Comparison
+
+The following table compares the computational runtime (in seconds) between the proposed **BCGD-PM** method and the **MIP**-based decomposition/coordination strategies presented in [1] and [2]. 
+
+### Hardware Specifications
+All benchmarks were performed on a laptop equipped with:
+* **Processor**: 13th Gen Intel(R) Core(TM) i7-1365U (1.80 GHz)
+* **RAM**: 16.0 GB
+* **OS**: 64-bit
+
+### Runtime Results
+| Scenario | Dynamics | BCGD-PM (Ours) | MIP [1, 2] |
+| :--- | :--- | :--- | :--- |
+| **R2AM** | Linear | **345s** | 425s |
+| **R2AMCA** | Linear | **1291s** | > 2000s |
+| **RURAMCA** | Linear | **1740s** | > 10000s |
+| **R2AM** | Unicycle | **820s** | N/A |
+| **R2AMCA** | Unicycle | **1852s** | N/A |
+| **RURAMCA** | Unicycle | **2326s** | N/A |
+
+### 📚 References
+
+[1] E. E. Vlahakis, L. Lindemann, P. Sopasakis and D. V. Dimarogonas, "Probabilistic Tube-based Control Synthesis of Stochastic Multi-Agent Systems under Signal Temporal Logic," *2024 IEEE 63rd Conference on Decision and Control (CDC)*, Milan, Italy, 2024, pp. 1586-1592. doi: [10.1109/CDC56724.2024.10886279](https://doi.org/10.1109/CDC56724.2024.10886279).
+
+[2] E. E. Vlahakis, L. Lindemann and D. V. Dimarogonas, "Conformal Data-driven Control of Stochastic Multi-Agent Systems under Collaborative Signal Temporal Logic Specifications," *2025 IEEE 64th Conference on Decision and Control (CDC)*, Rio de Janeiro, Brazil, 2025, pp. 624-629. doi: [10.1109/CDC57313.2025.11312039](https://doi.org/10.1109/CDC57313.2025.11312039).
+
+---
+
 
