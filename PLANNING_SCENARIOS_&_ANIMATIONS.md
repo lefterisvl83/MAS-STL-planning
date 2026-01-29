@@ -119,36 +119,29 @@ The algorithm is implemented in **Python**, leveraging **JAX** for hardware-acce
 
 ## 5. Visual Results
 
-The following animations demonstrate the swarm behavior across the three primary mission specifications for both linear and non-linear dynamics.
+The following comparisons demonstrate the swarm behavior across the three primary mission specifications. Each row compares **Linear Dynamics** (left) with **Unicycle Dynamics** (right).
 
-### 🔹 Linear Dynamics (Single Integrator)
-
-#### R2AM - Linear
-![R2AM Linear](assets/Github_gif_intro.gif)
-*Baseline Reach-Avoid multi-agent mission.*
-
-#### R2AMCA - Linear
-![R2AMCA Linear](assets/Github_gif_intro.gif)
-*Reach-Avoid mission with Inter-Agent Collision Avoidance.*
-
-#### RURAMCA - Linear
-![RURAMCA Linear](assets/Github_gif_intro.gif)
-*Complex Reach-Until-Reach mission with Collision Avoidance and Collaborative Meeting.*
+### 📍 R2AM: Baseline Reach-Avoid
+| Linear Dynamics | Unicycle Dynamics |
+| :---: | :---: |
+| ![R2AM Linear](assets/Github_gif_intr.gif) | ![R2AM Unicycle](assets/Github_gif_intr.gif) |
+| *Baseline mission using double integrator dynamics.* | *Baseline mission under non-linear unicycle constraints.* |
 
 ---
 
-### 🔸 Unicycle Dynamics (Non-linear)
-
-#### R2AM - Unicycle
-![R2AM Unicycle](assets/Github_gif_intro.gif)
-*Baseline Reach-Avoid mission under non-linear unicycle constraints.*
-
-#### R2AMCA - Unicycle
-![R2AMCA Unicycle](assets/Github_gif_intro.gif)
-*Unicycle dynamics with reactive Inter-Agent Collision Avoidance.*
-
-#### RURAMCA - Unicycle
-![RURAMCA Unicycle](assets/Github_gif_intro.gif)
-*Full RURAMCA mission satisfaction under non-linear unicycle dynamics.*
+### 📍 R2AMCA: Collision Avoidance
+| Linear Dynamics | Unicycle Dynamics |
+| :---: | :---: |
+| ![R2AMCA Linear](assets/Github_gif_intr.gif) | ![R2AMCA Unicycle](assets/Github_gif_intr.gif) |
+| *Reach-Avoid mission with Inter-Agent Collision Avoidance.* | *Unicycle dynamics with reactive collision avoidance.* |
 
 ---
+
+### 📍 RURAMCA: Reach-Until-Reach
+| Linear Dynamics | Unicycle Dynamics |
+| :---: | :---: |
+| ![RURAMCA Linear](assets/Github_gif_intr.gif) | ![RURAMCA Unicycle](assets/Github_gif_intr.gif) |
+| *Complex mission with until-logic and collaborative meeting.* | *Full RURAMCA mission satisfaction under non-linear dynamics.* |
+
+---
+
