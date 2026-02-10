@@ -135,7 +135,7 @@ Each animation corresponds to a specific execution script. For example, to repro
 ### 📍 RURAMCA: Reach-Until-Reach + Obstacle Avoidance + Collaborative Meeting + Inter-Agent Collision Avoidance
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
-| ![RURAMCA Linear](assets/Github_gif_intro.gif) | ![RURAMCA Unicycle](assets/RURAMCA_unicycle_final.gif) |
+| ![RURAMCA Linear](assets/Github_gif_intro.gif) | ![RURAMCA Unicycle](assets/RURAMCA_Unicycle_Final.gif) |
 | *Full RURAMCA mission under linear dynamics.* | *Full RURAMCA mission under unicycle dynamics.* |
 
 ---
