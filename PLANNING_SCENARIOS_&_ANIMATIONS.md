@@ -127,7 +127,7 @@ Each animation corresponds to a specific execution script. For example, to repro
 ### 📍 R2AMCA: R2AM + Collision Avoidance
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
-| ![R2AMCA Linear](assets/Github_gif_intro.gif) | ![R2AMCA Unicycle](assets/Github_gif_intro.gif) |
+| ![R2AMCA Linear](assets/Github_gif_intro.gif) | ![R2AMCA Unicycle](assets/R2AMCA_Unicycle_Final.gif) |
 | *R2AM mission under linear dynamics & Inter-Agent Collision Avoidance.* | *R2AM mission under unicycle dynamics & Inter-Agent Collision Avoidance.* |
 
 ---
