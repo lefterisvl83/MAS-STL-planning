@@ -395,8 +395,8 @@ Details of the smooth under approximations of the STL robustness function can be
 The Block-Coordinate Gradient Descent (BCGD) implementation and its convergence properties are based on the framework established in: 
 * **P. Tseng and S. Yun**, "A coordinate gradient descent method for nonsmooth separable minimization," Mathematical Programming, vol. 117, no. 1, pp. 387–423, 2009.
 
-The Penalty Method (Outer Loop) is based on the framework in:
-* **W. Sun and Y.-X. Yuan**, Optimization Theory and Methods: Nonlinear Programming, Springer, 2006. (See Section 10.2: The Simple Penalty Function Method).
+The Penalty Method (Outer Loop) is based on the framework in Chapter 17 of:
+* **J. Nocedal and S. Wright**, Numerical Optimization. Springer, 2006.
 ---
 
 ## 📜 Citation
