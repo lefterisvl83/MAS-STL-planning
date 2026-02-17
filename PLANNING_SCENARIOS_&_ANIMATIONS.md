@@ -106,29 +106,20 @@ The algorithm is implemented in **Python**, leveraging **JAX** for hardware-acce
 
 The following comparisons demonstrate the MAS trajectories across the three multi-agent STL specifications. Each row compares **Linear Dynamics** (left) with **Unicycle Dynamics** (right).
 
+### 🛠 How to Reproduce Results
+Each animation corresponds to a specific Jupyter notebook found in ./code folder (link is under each animation). 
+
 ### 📍 R2AM: Baseline Reach-twice-Avoid-Meet
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
 | ![R2AM Linear](assets/R2AM_Linear_Final.gif) | ![R2AM Unicycle](assets/R2AM_Unicycle_Final.gif) |
-| *[`Link to code for R2AM_linear`](./code/R2AM_Linear_Final.ipynb)* | *[`Link to code for R2AM_unicycle`](./code/R2AM_Unicycle_Final.ipynb).* |
-
-#### 🔗 Link to the code: 
-* **Linear Scenarios**: [`R2AM_linear`](./code/RURAMCA_unicycle.py)
-* **Unicycle Scenarios**: [`R2AM_linear`](./code/RURAMCA_unicycle.py)
-
-### 🛠 How to Reproduce Results
-Each animation corresponds to a specific execution script. For example, to reproduce the **RURAMCA Unicycle** results:
-
-1. Navigate to the scenario directory:
-   ```bash
-   cd scripts/unicycle
----
+| *[`Link to code for R2AM_linear`](./code/R2AM_Linear_Final.ipynb)* | *[`Link to code for R2AM_unicycle`](./code/R2AM_Unicycle_Final.ipynb)* |
 
 ### 📍 R2AMCA: R2AM + Collision Avoidance
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
 | ![R2AMCA Linear](assets/R2AMCA_Linear_Final.gif) | ![R2AMCA Unicycle](assets/R2AMCA_Unicycle_Final.gif) |
-| *R2AM mission under linear dynamics & Inter-Agent Collision Avoidance.* | *R2AM mission under unicycle dynamics & Inter-Agent Collision Avoidance.* |
+| *[`Link to code for R2AMCA_linear`](./code/R2AMCA_Linear_Final.ipynb)* | *[`Link to code for R2AMCA_unicycle`](./code/R2AMCA_Unicycle_Final.ipynb)* |
 
 ---
 
@@ -136,7 +127,7 @@ Each animation corresponds to a specific execution script. For example, to repro
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
 | ![RURAMCA Linear](assets/RURAMCA_Linear_Final.gif) | ![RURAMCA Unicycle](assets/RURAMCA_Unicycle_Final.gif) |
-| *Full RURAMCA mission under linear dynamics.* | *Full RURAMCA mission under unicycle dynamics.* |
+| *[`Link to code for RURAMCA_linear`](./code/RURAMCA_Linear_Final.ipynb)* | *[`Link to code for RURMCA_unicycle`](./code/RURAMCA_Unicycle_Final.ipynb)* |
 
 ---
 ## 5. Performance Comparison
