@@ -114,13 +114,13 @@ The following comparisons demonstrate the MAS trajectories across the three mult
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
 | ![R2AM Linear](assets/R2AM_Linear_Final.gif) | ![R2AM Unicycle](assets/R2AM_Unicycle_Final.gif) |
-| *[`Link to code for R2AM_linear`](./code/R2AM_Linear_Final.ipynb)* | *[`Link to code for R2AM_unicycle`](./code/R2AM_Unicycle_Final.ipynb)* |
+| *[`Link to code for R2AM_linear`](./code/BCGD/R2AM_Linear_Final.ipynb)* | *[`Link to code for R2AM_unicycle`](./code/BCGD/R2AM_Unicycle_Final.ipynb)* |
 
 ### 📍 R2AMCA: R2AM + Collision Avoidance
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
 | ![R2AMCA Linear](assets/R2AMCA_Linear_Final.gif) | ![R2AMCA Unicycle](assets/R2AMCA_Unicycle_Final.gif) |
-| *[`Link to code for R2AMCA_linear`](./code/R2AMCA_Linear_Final.ipynb)* | *[`Link to code for R2AMCA_unicycle`](./code/R2AMCA_Unicycle_Final.ipynb)* |
+| *[`Link to code for R2AMCA_linear`](./code/BCGD/R2AMCA_Linear_Final.ipynb)* | *[`Link to code for R2AMCA_unicycle`](./code/BCGD/R2AMCA_Unicycle_Final.ipynb)* |
 
 ---
 
@@ -128,7 +128,7 @@ The following comparisons demonstrate the MAS trajectories across the three mult
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
 | ![RURAMCA Linear](assets/RURAMCA_Linear_Final.gif) | ![RURAMCA Unicycle](assets/RURAMCA_Unicycle_Final.gif) |
-| *[`Link to code for RURAMCA_linear`](./code/RURAMCA_Linear_Final.ipynb)* | *[`Link to code for RURAMCA_unicycle`](./code/RURAMCA_Unicycle_Final.ipynb)* |
+| *[`Link to code for RURAMCA_linear`](./code/BCGD/RURAMCA_Linear_Final.ipynb)* | *[`Link to code for RURAMCA_unicycle`](./code/BCGD/RURAMCA_Unicycle_Final.ipynb)* |
 
 ---
 ## 5. Performance Comparison
