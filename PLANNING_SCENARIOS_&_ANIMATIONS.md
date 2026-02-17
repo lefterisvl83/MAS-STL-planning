@@ -107,7 +107,8 @@ The algorithm is implemented in **Python**, leveraging **JAX** for hardware-acce
 The following comparisons demonstrate the MAS trajectories across the three multi-agent STL specifications. Each row compares **Linear Dynamics** (left) with **Unicycle Dynamics** (right).
 
 ### 🛠 How to Reproduce Results
-Each animation corresponds to a specific Jupyter notebook found in ./code folder (link is under each animation). 
+> [!TIP]
+> Each animation is paired with a **Jupyter notebook** 📓 located in the `./code` folder. You can find the direct 🔗 **link** right below each GIF animation. 
 
 ### 📍 R2AM: Baseline Reach-twice-Avoid-Meet
 | Linear Dynamics | Unicycle Dynamics |
