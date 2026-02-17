@@ -165,6 +165,8 @@ All benchmarks were performed on a laptop equipped with:
 
 [2] E. E. Vlahakis, L. Lindemann and D. V. Dimarogonas, "Conformal Data-driven Control of Stochastic Multi-Agent Systems under Collaborative Signal Temporal Logic Specifications," *2025 IEEE 64th Conference on Decision and Control (CDC)*, Rio de Janeiro, Brazil, 2025, pp. 624-629. doi: [10.1109/CDC57313.2025.11312039](https://doi.org/10.1109/CDC57313.2025.11312039).
 
+[3]  J. Nocedal and S. Wright, Numerical Optimization, Chapter 9, Springer, 2006, Chapter 9
+
 ---
 
 
