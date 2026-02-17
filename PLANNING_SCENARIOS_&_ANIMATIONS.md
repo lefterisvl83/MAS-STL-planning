@@ -127,7 +127,7 @@ Each animation corresponds to a specific Jupyter notebook found in ./code folder
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
 | ![RURAMCA Linear](assets/RURAMCA_Linear_Final.gif) | ![RURAMCA Unicycle](assets/RURAMCA_Unicycle_Final.gif) |
-| *[`Link to code for RURAMCA_linear`](./code/RURAMCA_Linear_Final.ipynb)* | *[`Link to code for RURMCA_unicycle`](./code/RURAMCA_Unicycle_Final.ipynb)* |
+| *[`Link to code for RURAMCA_linear`](./code/RURAMCA_Linear_Final.ipynb)* | *[`Link to code for RURAMCA_unicycle`](./code/RURAMCA_Unicycle_Final.ipynb)* |
 
 ---
 ## 5. Performance Comparison
