@@ -110,7 +110,7 @@ The following comparisons demonstrate the MAS trajectories across the three mult
 | Linear Dynamics | Unicycle Dynamics |
 | :---: | :---: |
 | ![R2AM Linear](assets/R2AM_Linear_Final.gif) | ![R2AM Unicycle](assets/R2AM_Unicycle_Final.gif) |
-| *Baseline mission using single integrator dynamics.* | *Baseline mission under non-linear unicycle constraints.* |
+| *[`R2AM_linear`](./code/R2AM_Linear_Final.ipynb)* | *[`R2AM_linear`](./code/R2AM_Unicycle_Final.ipynb).* |
 
 #### 🔗 Link to the code: 
 * **Linear Scenarios**: [`R2AM_linear`](./code/RURAMCA_unicycle.py)
