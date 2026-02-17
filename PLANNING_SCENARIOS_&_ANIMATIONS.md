@@ -1,6 +1,6 @@
 # Ten-Robot SLT Motion Planning (Numerical Validation)
 
-We evaluate the **BCGD-PM** (Block Coordinate Gradient Descent - Penalty Method) framework using a complex multi-agent motion planning scenario. We compare its performance against traditional Mixed-Integer Programming (MIP) approaches across various task specifications as well as linear and unicycle dynamical models.
+We evaluate the **BCGD-PM** (Block Coordinate Gradient Descent - Penalty Method) framework across complex multi-agent motion planning scenarios for both linear and unicycle dynamical models. We compare its performance against Mixed-Integer Programming (MIP) approaches [1,2] and LBFGS (Limited-memory Broyden–Fletcher–Goldfarb–Shanno) method [3], which is a limited-memory quasi-Newton optimization algorithm that approximates the inverse Hessian using gradient history information to efficiently solve large-scale smooth unconstrained problems. LBFGS is also implemented in a block-coordinate fashion for fair comparison within the proposed modular penalty framework.
 
 ---
 
@@ -141,7 +141,7 @@ Each animation corresponds to a specific execution script. For example, to repro
 ---
 ## 5. Performance Comparison
 
-The following table compares the computational runtime (in seconds) between the proposed **BCGD-PM** method and the **MIP**-based decomposition/coordination strategies presented in [1] and [2]. 
+The following table compares the computational runtime (in seconds) between the proposed **BCGD-PM** method and the **MIP**-based decomposition/coordination strategies presented in [1] and [2]. To demonstrate the BCGD's efficiency, we compare its performance to the LBFGS method implemented in a block-coordinate fashion, as an alternative solver, which uses quasi-Newton curvature information to address the inner unconstrained subproblems in the penalty framework, thereby underscoring its modularity to wrap diverse inner solvers.
 
 ### Hardware Specifications
 All benchmarks were performed on a laptop equipped with:
