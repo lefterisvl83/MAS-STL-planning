@@ -133,7 +133,7 @@ The following comparisons demonstrate the MAS trajectories across the three mult
 ---
 ## 5. Performance Comparison
 
-The following table compares the computational runtime (in seconds) between the proposed **BCGD-PM** method and the **MIP**-based decomposition/coordination strategies presented in [1] and [2]. To demonstrate the BCGD's efficiency, we compare its performance to the LBFGS method implemented in a block-coordinate fashion, as an alternative solver, which uses quasi-Newton curvature information to address the inner unconstrained subproblems in the penalty framework, thereby underscoring its modularity to wrap diverse inner solvers.
+The following table compares the computational runtime (in seconds) between the proposed **BCGD-PM** method and the **MIP**-based decomposition/coordination strategies presented in [1] and [2]. To demonstrate the BCGD's efficiency, we compare its performance to the **LBFGS** method implemented in a block-coordinate fashion, as an alternative solver, which uses quasi-Newton curvature information to address the inner unconstrained subproblems in the penalty framework, thereby underscoring its modularity to wrap diverse inner solvers. You can reproduce the **LBFGS-PM** benchmark results using the corresponding Jupyter notebooks 📓 located in the `./code/LBFGS` folder.
 
 ### Hardware Specifications
 All benchmarks were performed on a laptop equipped with:
