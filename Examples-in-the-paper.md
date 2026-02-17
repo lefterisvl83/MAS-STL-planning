@@ -108,7 +108,7 @@ The following comparisons demonstrate the MAS trajectories across the three mult
 
 ### 🛠 How to Reproduce Results
 > [!TIP]
-> Each animation is paired with a **Jupyter notebook** 📓 located in the `./code` folder. You can find the direct 🔗 **link** right below each GIF animation. 
+> Each animation is paired with a **Jupyter notebook** 📓 located in the `./code/BCGD` folder. You can find the direct 🔗 **link** right below each GIF animation. 
 
 ### 📍 R2AM: Baseline Reach-twice-Avoid-Meet
 | Linear Dynamics | Unicycle Dynamics |
