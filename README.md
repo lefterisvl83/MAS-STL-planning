@@ -403,9 +403,12 @@ The Penalty Method (Outer Loop) is based on the framework in Chapter 17 of:
 If you use this method/code in your research, please cite:
 ```bibtex
 @misc{VlahakisLCSS26,
-  title={Efficient Multi-Agent Temporal Logic Planning via Block-Coordinate Optimization and Smooth Penalty Functions},
-  author={Vlahakis, Eleftherios E. and Kordabad, Arash Bahari and Lindemann, Lars and Sopasakis, Pantelis and Soudjani, Sadegh and Dimarogonas, Dimos V.},
-  booktitle={arxiv},
-  year={2026}
+      title={Multi-Agent Temporal Logic Planning via Penalty Functions and Block-Coordinate Optimization}, 
+      author={Eleftherios E. Vlahakis and Arash Bahari Kordabad and Lars Lindemann and Pantelis Sopasakis and Sadegh Soudjani and Dimos V. Dimarogonas},
+      year={2026},
+      eprint={2602.17434},
+      archivePrefix={arXiv},
+      primaryClass={eess.SY},
+      url={https://arxiv.org/abs/2602.17434}, 
 }
 
